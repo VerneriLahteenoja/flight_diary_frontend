@@ -1,13 +1,25 @@
+import { useEffect, useState } from "react"
+import { getAll } from "./services/diaryService"
 import DiaryEntryForm from "./components/DiaryEntryForm"
 import DiaryList from "./components/DiaryList"
+import { NonSensitiveDiaryEntry } from "./types"
 
 
 function App() {
   //TODO: Call axios services
+  const [diaries, setDiaries] = useState<NonSensitiveDiaryEntry[]>([]);
+
+  useEffect(() => {
+    getAll().then(data => {
+      setDiaries(data)
+    })
+  }, []);
+  
+  console.log(diaries)
   return (
     <div>
       <DiaryEntryForm />
-      <DiaryList diaryList={[]}/>
+      <DiaryList diaryList={diaries}/>
     </div>
   )
 }
