@@ -7,7 +7,7 @@ const DiaryList = (props: DiaryListProps) => {
     return (
       <h2>No entries yet</h2>
     );
-  };
+  }
 
   return (
     <div>

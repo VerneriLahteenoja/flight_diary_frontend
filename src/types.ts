@@ -22,11 +22,11 @@ export interface DiaryEntry {
 }
 
 export interface DiaryListProps {
-  diaryList: DiaryEntry [];
+  diaryList: NonSensitiveDiaryEntry [];
 }
 
 export interface DiaryEntryProps {
-  diaryEntry: DiaryEntry;
+  diaryEntry: NonSensitiveDiaryEntry;
 }
 
 
