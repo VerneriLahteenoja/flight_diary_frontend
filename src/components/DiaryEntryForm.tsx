@@ -1,5 +1,7 @@
 // Form to add new diaries
 import { useState } from "react";
+import { createDiaryEntry } from "../services/diaryService";
+
 
 const DiaryEntryForm = () => {
   const [date, setDate] = useState('');
@@ -10,7 +12,15 @@ const DiaryEntryForm = () => {
   const addEntry = (event: React.SyntheticEvent) => {
     event.preventDefault()
     console.log("addEntry clicked");
-    //TODO: Add form success handling
+    //TODO: Add typing to newEntry
+    const newEntry = {
+      date,
+      visibility,
+      weather,
+      comment
+    };
+    createDiaryEntry(newEntry);
+
     setDate('');
     setVisibility('');
     setWeather('');
