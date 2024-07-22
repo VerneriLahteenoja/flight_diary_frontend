@@ -6,7 +6,6 @@ import { NonSensitiveDiaryEntry } from "./types"
 
 
 function App() {
-  //TODO: Call axios services
   const [diaries, setDiaries] = useState<NonSensitiveDiaryEntry[]>([]);
 
   useEffect(() => {
