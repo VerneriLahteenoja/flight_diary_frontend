@@ -13,7 +13,6 @@ const DiaryEntryForm = (props: DiaryEntryFormProps) => {
 
   const addEntry = (event: React.SyntheticEvent) => {
     event.preventDefault()
-    console.log("addEntry clicked");
     //TODO: Add typing to newEntry
     const newEntry = {
       date,
@@ -46,16 +45,34 @@ const DiaryEntryForm = (props: DiaryEntryFormProps) => {
   };
   return (
     <form onSubmit={addEntry}>
-      <label htmlFor="date">date</label>
-      <input type="text" name="date" value={date} onChange={({target}) => setDate(target.value)}/>
+      <label htmlFor="date">Date</label>
+      <input type="date" min="2000-01-01" max="2050-01-01" name="date" value={date} onChange={({target}) => setDate(target.value)}/>
       <br />
-      <label htmlFor="visibility">visibility</label>
-      <input type="text" name="visibility" value={visibility} onChange={({target}) => setVisibility(target.value)} />
-      <br />
-      <label htmlFor="weather">weather</label>
-      <input type="text" name="weather" value={weather} onChange={({target}) => setWeather(target.value)} />
-      <br />
-      <label htmlFor="comment">comment</label>
+        <div>
+          Visibility:{' '}
+          <label htmlFor="great">great</label>
+          <input type="radio" id="great" name="visibility" value="great" onClick={() => setVisibility('great')} />
+          <label htmlFor="good">good</label>
+          <input type="radio" id="good" name="visibility" value="good" onClick={() => setVisibility('good')} />
+          <label htmlFor="ok">ok</label>
+          <input type="radio" id="ok" name="visibility" value="ok" onClick={() => setVisibility('ok')} />
+          <label htmlFor="poor">poor</label>
+          <input type="radio" id="poor" name="visibility" value="poor" onClick={() => setVisibility('poor')} />
+        </div>
+        <div>
+          Weather:{' '}
+          <label htmlFor="sunny">sunny</label>
+          <input type="radio" id="sunny" name="weather" value="sunny" onClick={() => setWeather('sunny')} />
+          <label htmlFor="rainy">rainy</label>
+          <input type="radio" id="rainy" name="weather" value="rainy" onClick={() => setWeather('rainy')} />
+          <label htmlFor="cloudy">cloudy</label>
+          <input type="radio" id="cloudy" name="weather" value="cloudy" onClick={() => setWeather('cloudy')} />
+          <label htmlFor="stormy">stormy</label>
+          <input type="radio" id="stormy" name="weather" value="stormy" onClick={() => setWeather('stormy')} />
+          <label htmlFor="windy">windy</label>
+          <input type="radio" id="windy" name="weather" value="windy" onClick={() => setWeather('windy')} />
+        </div>
+      <label htmlFor="comment">Comment</label>
       <input type="text" name="comment" value={comment} onChange={({target}) => setComment(target.value)} />
       <br />
       <button type="submit">add</button>
