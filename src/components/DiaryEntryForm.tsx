@@ -1,9 +1,11 @@
 // Form to add new diaries
 import { useState } from "react";
 import { createDiaryEntry } from "../services/diaryService";
+import { DiaryEntryFormProps } from "../types";
+import axios from "axios";
 
 
-const DiaryEntryForm = () => {
+const DiaryEntryForm = (props: DiaryEntryFormProps) => {
   const [date, setDate] = useState('');
   const [visibility, setVisibility] = useState('');
   const [weather, setWeather] = useState('');
@@ -19,7 +21,23 @@ const DiaryEntryForm = () => {
       weather,
       comment
     };
-    createDiaryEntry(newEntry);
+    // Consider using other ways of state management
+    // if necessary
+    createDiaryEntry(newEntry)
+      .then((res) => {
+        const newDiaries = props.diaries.concat(res)
+        props.setDiaries(newDiaries)
+      })
+      .catch(e => {
+        if (axios.isAxiosError(e)) {
+          props.setMessage(e.response?.data)
+        } else {
+          props.setMessage(String(e))
+        }
+        setTimeout(() => {
+          props.setMessage("")
+        }, 5000)
+      })
 
     setDate('');
     setVisibility('');
