@@ -8,8 +8,9 @@ const DiaryEntry = (props: DiaryEntryProps) => {
       <br />
       <b>{props.diaryEntry.date}</b>
       <br />
-      {props.diaryEntry.weather}
-      {props.diaryEntry.visibility}
+      weather: {props.diaryEntry.weather}
+      <br />
+      visibility: {props.diaryEntry.visibility}
     </div>
   );
 };
