@@ -1,3 +1,19 @@
+import { Dispatch, SetStateAction } from "react";
+
+export interface NotificationProps {
+  message: string;
+}
+
+export interface MessageSetter {
+  setMessage: Dispatch<SetStateAction<string>>;
+}
+
+export interface DiaryEntryFormProps {
+  setMessage: Dispatch<SetStateAction<string>>;
+  diaries: NonSensitiveDiaryEntry[];
+  setDiaries: Dispatch<SetStateAction<NonSensitiveDiaryEntry[]>>;
+}
+
 export enum Weather {
   Sunny = 'sunny',
   Rainy = 'rainy',
@@ -33,3 +49,4 @@ export interface DiaryEntryProps {
 export type NewDiaryEntry = Omit<DiaryEntry, 'id'>;
 
 export type NonSensitiveDiaryEntry = Omit<DiaryEntry, 'comment'>;
+
