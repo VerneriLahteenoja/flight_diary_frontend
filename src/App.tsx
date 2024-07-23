@@ -3,10 +3,12 @@ import { getAll } from "./services/diaryService"
 import DiaryEntryForm from "./components/DiaryEntryForm"
 import DiaryList from "./components/DiaryList"
 import { NonSensitiveDiaryEntry } from "./types"
+import Notification from "./components/Notification"
 
 
 function App() {
   const [diaries, setDiaries] = useState<NonSensitiveDiaryEntry[]>([]);
+  const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
     getAll().then(data => {
@@ -17,8 +19,9 @@ function App() {
   console.log(diaries)
   return (
     <div>
-      <DiaryEntryForm />
-      <DiaryList diaryList={diaries}/>
+      {message && <Notification message={message} />}
+      <DiaryEntryForm setMessage={setMessage} diaries={diaries} setDiaries={setDiaries}/>
+      <DiaryList diaryList={diaries}/>    
     </div>
   )
 }
